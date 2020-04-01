@@ -1,68 +1,79 @@
-let handsArray = ['rock', 'paper', 'scissors']
+let hands = ['rock', 'paper', 'scissors']
+
+let player1Win=0
+let player2Win=0
 
 let player1 = {
-    name: 'Player one',
+    name: 'Beatrix',
     hand: getHand()
 }
 
 let player2 = {
-    name: 'Player two',
+    name: 'River',
     hand: getHand()
 }
 
-var player1Win = 0;
-var player2Win = 0;
-
-function getHand(){
-    return handsArray[parseInt((Math.random()*10)%3)];
-};
-
-function playRound(player1, player2){
-    if     (player1.hand === "rock" && player2.hand === "scissors"){
-        console.log(player1.name + " played " + player1.hand + " and " + player2.name + " played " + player2.hand + ". " + player1.name + " wins!");
-        return player1.name;
-    }
-    else if(player1.hand === "rock" && player2.hand === "paper"){
-        console.log(player1.name + " played " + player1.hand + " and " + player2.name + " played " + player2.hand + ". " + player2.name + " wins!");
-        return player2.name;
-    }
-    else if(player1.hand === "paper" && player2.hand === "scissors"){
-        console.log(player1.name + " played " + player1.hand + " and " + player2.name + " played " + player2.hand + ". " + player2.name + " wins!");
-        return player2.name
-    }
-    else if(player1.hand === "paper" && player2.hand === "rock"){
-        console.log(player1.name + " played " + player1.hand + " and " + player2.name + " played " + player2.hand + ". " + player1.name + " wins!");
-        return player1.name
-    }
-    else if(player1.hand === "scissors" && player2.hand === "rock"){
-        console.log(player1.name + " played " + player1.hand + " and " + player2.name + " played " + player2.hand + ". " + player2.name + " wins!");
-        return player2.name
-    }
-    else if(player1.hand === "scissors" && player2.hand === "paper"){
-        console.log(player1.name + " played " + player1.hand + " and " + player2.name + " played " + player2.hand + ". " + player1.name + " wins!");
-        return player1.name
-    }
-    else{
-        console.log(player1.name + " played " + player1.hand + " and " + player2.name + " played " + player2.hand + ". It's a tie!");
-        return null;
-    }
-};
-
-function playGame(player1, player2, playUntil){
-    while(player1Win < playUntil && player2Win < playUntil){
-        var result = playRound(player1, player2);
-        if(result===player1.name){
-            return player1Win++;
-            break;
-        }
-        else if(result===player2.name){
-            return player2Win++;
-            break;
-        }
-        else{
-            break;
-        }
-    }
+function getHand() {
+    return hands[parseInt(Math.random()*10)%3]
 }
 
-playGame(player1, player2, 2);
+function playRound() {
+    if (player1.hand == player2.hand) {
+        return player1.name + " played " + player1.hand + " and " + player2.name + " played " + player2.hand + ". " + "It's a tie!";
+
+    }
+
+    if (player1.hand == 'paper') {
+        if (player2.hand == 'rock'){
+        return player1.name + " played " + player1.hand + " and " + player2.name + " played " + player2.hand + ". " + player1.name + " wins!";
+        } else {
+            return player1.name + " played " + player1.hand + " and " + player2.name + " played " + player2.hand + ". " + player2.name + " wins!"
+        }
+
+    } 
+
+    if (player1.hand == 'scissors') {
+        if (player2.hand == 'paper'){
+        return player1.name + " played " + player1.hand + " and " + player2.name + " played " + player2.hand + ". " + player1.name + " wins!";
+        } else {
+            return player1.name + " played " + player1.hand + " and " + player2.name + " played " + player2.hand + ". " + player2.name + " wins!"
+        }
+
+    } 
+
+    if (player1.hand == 'rock') {
+        if (player2.hand == 'scissors'){
+        return player1.name + " played " + player1.hand + " and " + player2.name + " played " + player2.hand + ". " + player1.name + " wins!";
+        } else {
+            return player1.name + " played " + player1.hand + " and " + player2.name + " played " + player2.hand + ". " + player2.name + " wins!"
+        }
+
+    } 
+
+
+}
+
+
+//playGame function
+
+// function playGame(player1, player2, playUntil){
+//     while(player1Win < playUntil && player2Win < playUntil){
+//         var result = playRound(player1, player2);
+//         if(result===player1.name){
+//             return player1Win++;
+//             break;
+//         }
+//         else if(result===player2.name){
+//             return player2Win++;
+//             break;
+//         }
+//         else{
+//             break;
+//         }
+//     }
+// }
+
+// playGame(player1, player2, 2);
+
+console.log(playRound(player1.hand,player2.hand));
+
